@@ -1,0 +1,497 @@
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QApplication,QMainWindow,QCheckBox,QLabel,QWidget,QDialog,QComboBox
+from PyQt5.QtCore import QSize,QCoreApplication , QMetaObject, Qt
+from PyQt5.QtGui import QIcon, QPixmap
+
+class window8(QMainWindow):                           
+    def __init__(self):
+        super(window8,self).__init__()
+        self.setWindowTitle("Fault Injection Window for the system")
+        self.setGeometry(200,200,500,300)
+        self.setStyleSheet("background-color: rgb(9, 9, 9);")
+        #Label trial
+        label = QLabel("Select the Faults to be injected to the whole system:") 
+        label.setStyleSheet("color: rgb(255, 255, 255);")
+        label.setMargin(50)
+        self.setCentralWidget(label)
+        #checkboxes for fault injection choices for FI in system
+        self.r = QCheckBox("Fault1",self)
+        self.r.stateChanged.connect(self.clickBox5)
+        self.r.move(350,60)
+        self.r.resize(320,40)
+        self.r.setStyleSheet("color: rgb(255, 255, 255);")
+        self.s = QCheckBox("Fault2",self)
+        self.s.stateChanged.connect(self.clickBox5)
+        self.s.move(350,90)
+        self.s.resize(320,40)
+        self.s.setStyleSheet("color: rgb(255, 255, 255);")
+        self.t = QCheckBox("Fault3",self)
+        self.t.stateChanged.connect(self.clickBox5)
+        self.t.move(350,120)
+        self.t.resize(320,40)
+        self.t.setStyleSheet("color: rgb(255, 255, 255);")
+        self.u = QCheckBox("Fault4",self)
+        self.u.stateChanged.connect(self.clickBox5)
+        self.u.move(350,150)
+        self.u.resize(320,40)
+        self.u.setStyleSheet("color: rgb(255, 255, 255);")
+        self.v = QCheckBox("Fault5",self)
+        self.v.stateChanged.connect(self.clickBox5)
+        self.v.move(350,180)
+        self.v.resize(320,40)
+        self.v.setStyleSheet("color: rgb(255, 255, 255);")
+
+        #Proceed PushButton
+        self.pushButton = QtWidgets.QPushButton("Proceed",self)
+        self.pushButton.setGeometry(QtCore.QRect(400, 220, 80, 51))
+        self.pushButton.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(6, 6, 6);\n"
+"background-color: rgb(6, 6, 6);\n"
+"color: rgb(255, 255, 255);\n"
+"font: 75 12pt \"MS Shell Dlg 2\";\n"
+"color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"color: rgb(0, 0, 0);\n"
+"background-color: rgb(255, 255, 255);\n"
+"Border-radius:20px;")
+
+
+    def clickBox5(self, state5):
+
+        if state5 == QtCore.Qt.Checked:
+            print('Checked')
+        else:
+            print('Unchecked')
+        self.show()
+
+class window7(QMainWindow):                           
+    def __init__(self):
+        super(window7,self).__init__()
+        self.setWindowTitle("System's Window")
+        self.setGeometry(200,200,500,300)
+        self.setStyleSheet("background-color: rgb(9, 9, 9);")
+        #Label trial
+        label = QLabel("Choose the connection Type:") 
+        label.setStyleSheet("color: rgb(255, 255, 255);")
+        label.setMargin(50)
+        # Set the central widget of the Window. Widget will expand
+        self.setCentralWidget(label)
+
+        #Add ComboBox to select type of connection
+        self.cb = QComboBox(self)
+        self.cb.addItem("Can Bus")
+        self.cb.addItem("Ethernet")
+        self.cb.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.cb.move(240,135)
+        #set pushbutton to go to next window
+        self.pushButton = QtWidgets.QPushButton("Proceed",self)
+        self.pushButton.setGeometry(QtCore.QRect(390, 220, 80, 51))
+        self.pushButton.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(6, 6, 6);\n"
+"background-color: rgb(6, 6, 6);\n"
+"color: rgb(255, 255, 255);\n"
+"font: 75 12pt \"MS Shell Dlg 2\";\n"
+"color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"color: rgb(0, 0, 0);\n"
+"background-color: rgb(255, 255, 255);\n"
+"Border-radius:20px;")
+        self.pushButton.clicked.connect(self.window8)
+    def window8(self):                                             
+        self.w = window8()
+        self.w.show()
+        
+       
+        
+class window6(QMainWindow):                           
+    def __init__(self):
+        super(window6,self).__init__()
+        self.setWindowTitle("Fault Injection Window for ECU4")
+        self.setGeometry(250,250,500,300)
+        self.setStyleSheet("background-color: rgb(9, 9, 9);")
+        #Label trial
+        label = QLabel("Select the Faults to be injected to ECU4:") 
+        label.setStyleSheet("color: rgb(255, 255, 255);")
+        label.setMargin(50)
+        # Set the central widget of the Window. Widget will expand
+        self.setCentralWidget(label)
+
+        self.q = QCheckBox("Fault1",self)
+        self.q.stateChanged.connect(self.clickBox4)
+        self.q.move(300,60)
+        self.q.resize(320,40)
+        self.q.setStyleSheet("color: rgb(255, 255, 255);")
+        self.r = QCheckBox("Fault2",self)
+        self.r.stateChanged.connect(self.clickBox4)
+        self.r.move(300,90)
+        self.r.resize(320,40)
+        self.r.setStyleSheet("color: rgb(255, 255, 255);")
+        self.s = QCheckBox("Fault3",self)
+        self.s.stateChanged.connect(self.clickBox4)
+        self.s.move(300,120)
+        self.s.resize(320,40)
+        self.s.setStyleSheet("color: rgb(255, 255, 255);")
+        self.t = QCheckBox("Fault4",self)
+        self.t.stateChanged.connect(self.clickBox4)
+        self.t.move(300,150)
+        self.t.resize(320,40)
+        self.t.setStyleSheet("color: rgb(255, 255, 255);")
+        self.u = QCheckBox("Fault5",self)
+        self.u.stateChanged.connect(self.clickBox4)
+        self.u.move(300,180)
+        self.u.resize(320,40)
+        self.u.setStyleSheet("color: rgb(255, 255, 255);")
+        
+        #Proceed PushButton
+        self.pushButton = QtWidgets.QPushButton("Proceed",self)
+        self.pushButton.setGeometry(QtCore.QRect(390, 220, 80, 51))
+        self.pushButton.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(6, 6, 6);\n"
+"background-color: rgb(6, 6, 6);\n"
+"color: rgb(255, 255, 255);\n"
+"font: 75 12pt \"MS Shell Dlg 2\";\n"
+"color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"color: rgb(0, 0, 0);\n"
+"background-color: rgb(255, 255, 255);\n"
+"Border-radius:20px;")
+        
+
+    def clickBox4(self, state4):
+
+        if state4 == QtCore.Qt.Checked:
+            print('Checked')
+        else:
+            print('Unchecked')
+        self.show()
+class window5(QMainWindow):                           
+    def __init__(self):
+        super(window5,self).__init__()
+        self.setWindowTitle("Fault Injection Window for ECU3")
+        self.setGeometry(200,200,500,300)
+        self.setStyleSheet("background-color: rgb(9, 9, 9);")
+        #Label trial
+        label = QLabel("Select the Faults to be injected to ECU3:") 
+        label.setStyleSheet("color: rgb(255, 255, 255);")
+        label.setMargin(50)
+        # Set the central widget of the Window. Widget will expand
+        self.setCentralWidget(label)
+
+        self.g = QCheckBox("Fault1",self)
+        self.g.stateChanged.connect(self.clickBox3)
+        self.g.move(300,60)
+        self.g.resize(320,40)
+        self.g.setStyleSheet("color: rgb(255, 255, 255);")
+        self.h = QCheckBox("Fault2",self)
+        self.h.stateChanged.connect(self.clickBox3)
+        self.h.move(300,90)
+        self.h.resize(320,40)
+        self.h.setStyleSheet("color: rgb(255, 255, 255);")
+        self.i = QCheckBox("Fault3",self)
+        self.i.stateChanged.connect(self.clickBox3)
+        self.i.move(300,120)
+        self.i.resize(320,40)
+        self.i.setStyleSheet("color: rgb(255, 255, 255);")
+        self.j = QCheckBox("Fault4",self)
+        self.j.stateChanged.connect(self.clickBox3)
+        self.j.move(300,150)
+        self.j.resize(320,40)
+        self.j.setStyleSheet("color: rgb(255, 255, 255);")
+        self.k = QCheckBox("Fault5",self)
+        self.k.stateChanged.connect(self.clickBox3)
+        self.k.move(300,180)
+        self.k.resize(320,40)
+        self.k.setStyleSheet("color: rgb(255, 255, 255);")
+
+        #Proceed PushButton
+        self.pushButton = QtWidgets.QPushButton("Proceed",self)
+        self.pushButton.setGeometry(QtCore.QRect(390, 220, 80, 51))
+        self.pushButton.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(6, 6, 6);\n"
+"background-color: rgb(6, 6, 6);\n"
+"color: rgb(255, 255, 255);\n"
+"font: 75 12pt \"MS Shell Dlg 2\";\n"
+"color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"color: rgb(0, 0, 0);\n"
+"background-color: rgb(255, 255, 255);\n"
+"Border-radius:20px;")
+        
+        
+
+    def clickBox3(self, state3):
+
+        if state3 == QtCore.Qt.Checked:
+            print('Checked')
+        else:
+            print('Unchecked')
+        self.show()
+class window4(QMainWindow):                           
+    def __init__(self):
+        super(window4,self).__init__()
+        self.setWindowTitle("Fault Injection Window for ECU2")
+        self.setGeometry(150,150,500,300)
+        self.setStyleSheet("background-color: rgb(9, 9, 9);")
+        #Label trial
+        label = QLabel("Select the Faults to be injected to ECU2:") 
+        label.setStyleSheet("color: rgb(255, 255, 255);")
+        label.setMargin(50)
+        # Set the central widget of the Window. Widget will expand
+        self.setCentralWidget(label)
+       
+
+        self.l = QCheckBox("Fault1",self)
+        self.l.stateChanged.connect(self.clickBox2)
+        self.l.move(300,60)
+        self.l.resize(320,40)
+        self.l.setStyleSheet("color: rgb(255, 255, 255);")
+        self.m = QCheckBox("Fault2",self)
+        self.m.stateChanged.connect(self.clickBox2)
+        self.m.move(300,90)
+        self.m.resize(320,40)
+        self.m.setStyleSheet("color: rgb(255, 255, 255);")
+        self.n = QCheckBox("Fault3",self)
+        self.n.stateChanged.connect(self.clickBox2)
+        self.n.move(300,120)
+        self.n.resize(320,40)
+        self.n.setStyleSheet("color: rgb(255, 255, 255);")
+        self.o = QCheckBox("Fault4",self)
+        self.o.stateChanged.connect(self.clickBox2)
+        self.o.move(300,150)
+        self.o.resize(320,40)
+        self.o.setStyleSheet("color: rgb(255, 255, 255);")
+        self.p = QCheckBox("Fault5",self)
+        self.p.stateChanged.connect(self.clickBox2)
+        self.p.move(300,180)
+        self.p.resize(320,40)
+        self.p.setStyleSheet("color: rgb(255, 255, 255);")
+        
+        #Proceed PushButton
+        self.pushButton = QtWidgets.QPushButton("Proceed",self)
+        self.pushButton.setGeometry(QtCore.QRect(390, 220, 80, 51))
+        self.pushButton.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(6, 6, 6);\n"
+"background-color: rgb(6, 6, 6);\n"
+"color: rgb(255, 255, 255);\n"
+"font: 75 12pt \"MS Shell Dlg 2\";\n"
+"color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"color: rgb(0, 0, 0);\n"
+"background-color: rgb(255, 255, 255);\n"
+"Border-radius:20px;")
+        
+
+    def clickBox2(self, state2):
+
+        if state2 == QtCore.Qt.Checked:
+            print('Checked')
+        else:
+            print('Unchecked')
+        self.show()
+
+
+class window3(QMainWindow):                           
+    def __init__(self):
+        super(window3,self).__init__()
+        self.setWindowTitle("Fault Injection Window for ECU1")
+        self.setGeometry(100,100,500,300)
+        self.setStyleSheet("background-color: rgb(9, 9, 9);")
+        #Label trial
+        label = QLabel("Select the Faults to be injected to ECU1:") 
+        label.setStyleSheet("color: rgb(255, 255, 255);")
+        label.setMargin(50)
+        # Set the central widget of the Window. Widget will expand
+        self.setCentralWidget(label)
+        
+
+        self.b = QCheckBox("Fault1",self)
+        self.b.stateChanged.connect(self.clickBox)
+        self.b.move(300,60)
+        self.b.resize(320,40)
+        self.b.setStyleSheet("color: rgb(255, 255, 255);")
+        self.c = QCheckBox("Fault2",self)
+        self.c.stateChanged.connect(self.clickBox)
+        self.c.move(300,90)
+        self.c.resize(320,40)
+        self.c.setStyleSheet("color: rgb(255, 255, 255);")
+        self.d = QCheckBox("Fault3",self)
+        self.d.stateChanged.connect(self.clickBox)
+        self.d.move(300,120)
+        self.d.resize(320,40)
+        self.d.setStyleSheet("color: rgb(255, 255, 255);")
+        self.e = QCheckBox("Fault4",self)
+        self.e.stateChanged.connect(self.clickBox)
+        self.e.move(300,150)
+        self.e.resize(320,40)
+        self.e.setStyleSheet("color: rgb(255, 255, 255);")
+        self.f = QCheckBox("Fault5",self)
+        self.f.stateChanged.connect(self.clickBox)
+        self.f.move(300,180)
+        self.f.resize(320,40)
+        self.f.setStyleSheet("color: rgb(255, 255, 255);")
+        #Proceed PushButton
+        self.pushButton = QtWidgets.QPushButton("Proceed",self)
+        self.pushButton.setGeometry(QtCore.QRect(390, 220, 80, 51))
+        self.pushButton.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(6, 6, 6);\n"
+"background-color: rgb(6, 6, 6);\n"
+"color: rgb(255, 255, 255);\n"
+"font: 75 12pt \"MS Shell Dlg 2\";\n"
+"color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"color: rgb(0, 0, 0);\n"
+"background-color: rgb(255, 255, 255);\n"
+"Border-radius:20px;")
+        
+        
+    def clickBox(self, state):
+
+        if state == QtCore.Qt.Checked:
+            print('Checked')
+        else:
+            print('Unchecked')
+        self.show()
+
+    
+
+class Window2(QMainWindow):                           
+    def __init__(self):
+        super(Window2,self).__init__()
+        self.setWindowTitle("ECUWindow")
+        self.setGeometry(600,50,500,300)
+        self.resize(700, 500)
+        self.setStyleSheet("background-image: url(:/pics/Automotive.jpg);")
+        self.pushButton = QtWidgets.QPushButton("ECU1",self)
+        self.pushButton.move(150,50)
+        self.pushButton.setStyleSheet("color: rgb(247, 252, 255);")
+        self.pushButton.clicked.connect(self.window3)
+        self.pushButton = QtWidgets.QPushButton("ECU2",self)
+        self.pushButton.move(400,50)
+        self.pushButton.setStyleSheet("color: rgb(247, 252, 255);")
+        self.pushButton.clicked.connect(self.window4)
+        self.pushButton = QtWidgets.QPushButton("ECU3",self)
+        self.pushButton.move(150,150)
+        self.pushButton.setStyleSheet("color: rgb(247, 252, 255);")
+        self.pushButton.clicked.connect(self.window5)
+        self.pushButton = QtWidgets.QPushButton("ECU4",self)
+        self.pushButton.move(400,150)
+        self.pushButton.setStyleSheet("color: rgb(247, 252, 255);")
+        self.pushButton.clicked.connect(self.window6)
+
+        #PushButton for system as a whole
+        self.pushButton = QtWidgets.QPushButton("System",self)
+        self.pushButton.move(280,220)
+        self.pushButton.setStyleSheet("color: rgb(247, 252, 255);")
+        self.pushButton.clicked.connect(self.window7)
+        
+    import picture_rc   
+        
+    
+    def window3(self):                                             
+        self.w = window3()
+        self.w.show()
+    def window4(self):                                             
+        self.w = window4()
+        self.w.show()
+    def window5(self):                                             
+        self.w = window5()
+        self.w.show()
+    def window6(self):                                             
+        self.w = window6()
+        self.w.show()
+    def window7(self):                                             
+        self.w = window7()
+        self.w.show()
+class Ui_Form(object):
+    def setupUi(self, Form):
+        Form.setObjectName("Form")
+        Form.resize(715, 553)
+        Form.setStyleSheet("background-color: rgb(9, 9, 9);")
+        self.frame = QtWidgets.QFrame(Form)
+        self.frame.setGeometry(QtCore.QRect(0, 10, 721, 251))
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.widget = QtWidgets.QWidget(self.frame)
+        self.widget.setGeometry(QtCore.QRect(20, 30, 681, 211))
+        self.widget.setObjectName("widget")
+        self.label = QtWidgets.QLabel(self.widget)
+        self.label.setGeometry(QtCore.QRect(150, -70, 711, 331))
+        self.label.setPixmap(QtGui.QPixmap(":/icons/iso.jpg"))
+        self.label.setObjectName("label")
+        self.frame_2 = QtWidgets.QFrame(Form)
+        self.frame_2.setGeometry(QtCore.QRect(30, 290, 451, 221))
+        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_2.setObjectName("frame_2")
+        self.lineEdit = QtWidgets.QLineEdit(self.frame_2)
+        self.lineEdit.setGeometry(QtCore.QRect(160, 29, 191, 31))
+        self.lineEdit.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.lineEdit.setObjectName("lineEdit")
+        self.lineEdit_2 = QtWidgets.QLineEdit(self.frame_2)
+        self.lineEdit_2.setGeometry(QtCore.QRect(160, 110, 191, 31))
+        self.lineEdit_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.lineEdit_2.setObjectName("lineEdit_2")
+        self.comboBox = QtWidgets.QComboBox(self.frame_2)
+        self.comboBox.setGeometry(QtCore.QRect(160, 70, 101, 31))
+        self.comboBox.setStyleSheet("color: rgb(255, 255, 255);\n"
+"color: rgb(3, 3, 3);\n"
+"background-color: rgb(255, 255, 255);")
+        self.comboBox.setObjectName("comboBox")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.label_2 = QtWidgets.QLabel(self.frame_2)
+        self.label_2.setGeometry(QtCore.QRect(80, 30, 61, 21))
+        self.label_2.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_2.setObjectName("label_2")
+        self.label_4 = QtWidgets.QLabel(self.frame_2)
+        self.label_4.setGeometry(QtCore.QRect(80, 120, 71, 21))
+        self.label_4.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_4.setObjectName("label_4")
+        self.label_3 = QtWidgets.QLabel(self.frame_2)
+        self.label_3.setGeometry(QtCore.QRect(80, 70, 61, 21))
+        self.label_3.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_3.setObjectName("label_3")
+        self.frame_3 = QtWidgets.QFrame(Form)
+        self.frame_3.setGeometry(QtCore.QRect(499, 320, 151, 101))
+        self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_3.setObjectName("frame_3")
+        self.pushButton = QtWidgets.QPushButton(self.frame_3)
+        self.pushButton.setGeometry(QtCore.QRect(20, 12, 111, 61))
+        self.pushButton.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(6, 6, 6);\n"
+"background-color: rgb(6, 6, 6);\n"
+"color: rgb(255, 255, 255);\n"
+"font: 75 12pt \"MS Shell Dlg 2\";\n"
+"color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"color: rgb(0, 0, 0);\n"
+"background-color: rgb(255, 255, 255);\n"
+"Border-radius:20px;")
+        self.pushButton.setObjectName("pushButton")
+
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+      
+
+
+    def retranslateUi(self, Form):
+        _translate = QtCore.QCoreApplication.translate
+        Form.setWindowTitle(_translate("Form", "Form"))
+        self.label.setText(_translate("Form", "<html><head/><body><p><img src=\":/newPrefix/icons/iso.jpg\"/></p></body></html>"))
+        self.lineEdit.setPlaceholderText(_translate("Form", "enter your name"))
+        self.lineEdit_2.setPlaceholderText(_translate("Form", "enter your email "))
+        self.comboBox.setItemText(0, _translate("Form", "Male"))
+        self.comboBox.setItemText(1, _translate("Form", "Female"))
+        self.label_2.setText(_translate("Form", "Name:"))
+        self.label_4.setText(_translate("Form", "Email:"))
+        self.label_3.setText(_translate("Form", "Gender:"))
+        self.pushButton.setText(_translate("Form", "Submit"))
+        self.pushButton.clicked.connect(self.window2) 
+    def window2(self):                                             
+        self.w = Window2()
+        self.w.show()
+   
+import photos_rc  
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Form = QtWidgets.QWidget()
+    ui = Ui_Form()
+    ui.setupUi(Form)
+    Form.show()
+    sys.exit(app.exec_())
